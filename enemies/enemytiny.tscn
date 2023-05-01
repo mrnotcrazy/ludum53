@@ -1,0 +1,197 @@
+[gd_scene load_steps=24 format=3 uid="uid://cyybqqdgquvf3"]
+
+[ext_resource type="Script" path="res://enemyBase.gd" id="1_1i6ek"]
+[ext_resource type="Texture2D" uid="uid://lrntt1qlenmd" path="res://enemy3.png" id="2_5mirj"]
+[ext_resource type="Texture2D" uid="uid://bfjt4j7ym8wc" path="res://particle.png" id="3_4apmi"]
+[ext_resource type="AudioStream" uid="uid://dikrq03gmwtq0" path="res://hit.wav" id="4_48us7"]
+[ext_resource type="PackedScene" uid="uid://be2gev6wvqx6y" path="res://rocket.tscn" id="5_lly2e"]
+[ext_resource type="Texture2D" uid="uid://dw62rv0n58hl8" path="res://explosion0.png" id="6_tfqso"]
+
+[sub_resource type="Gradient" id="Gradient_h0cbs"]
+offsets = PackedFloat32Array(0, 0.37037, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_heo2w"]
+gradient = SubResource("Gradient_h0cbs")
+
+[sub_resource type="Curve" id="Curve_d71dh"]
+_data = [Vector2(0.0060241, 0.145455), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vdn8o"]
+curve = SubResource("Curve_d71dh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3n1qd"]
+lifetime_randomness = 0.79
+particle_flag_disable_z = true
+gravity = Vector3(0, -99, 0)
+initial_velocity_min = 220.59
+initial_velocity_max = 235.29
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_vdn8o")
+color_ramp = SubResource("GradientTexture1D_heo2w")
+attractor_interaction_enabled = false
+
+[sub_resource type="Gradient" id="Gradient_l4a4j"]
+offsets = PackedFloat32Array(0, 0.244444, 0.562963, 0.866667)
+colors = PackedColorArray(75.74, 0, 0, 1, 7.69, 2.37, 0, 1, 0.867219, 0.657223, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7wo5d"]
+gradient = SubResource("Gradient_l4a4j")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_sge22"]
+_data = [Vector2(0.00892857, 0.236364), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_62e6j"]
+curve = SubResource("Curve_sge22")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qww5e"]
+lifetime_randomness = 0.15
+emission_shape = 3
+emission_box_extents = Vector3(50, 25, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 34.65
+gravity = Vector3(0, -99, 0)
+initial_velocity_min = 118.11
+initial_velocity_max = 560.23
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_62e6j")
+color_ramp = SubResource("GradientTexture1D_7wo5d")
+attractor_interaction_enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pslj"]
+size = Vector2(88.5324, 71.5794)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5yps"]
+size = Vector2(62.625, 45.25)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dpgl7"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_xoyk8"]
+offsets = PackedFloat32Array(0, 0.603406, 0.997567)
+colors = PackedColorArray(1, 1, 1, 1, 0.355314, 0.355314, 0.355314, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_816yr"]
+gradient = SubResource("Gradient_xoyk8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_77lor"]
+emission_shape = 1
+emission_sphere_radius = 120.2
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 87.6
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+color_ramp = SubResource("GradientTexture1D_816yr")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sojc2"]
+radius = 240.674
+
+[node name="enemy" type="RigidBody2D" groups=["enemy"]]
+collision_layer = 7
+collision_mask = 5
+mass = 21.34
+gravity_scale = 0.0
+linear_damp = 0.079
+script = ExtResource("1_1i6ek")
+health = 100
+move_speed = 2000.0
+rotation_speed = 50.0
+value = 15
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.579466, 0.579466)
+texture = ExtResource("2_5mirj")
+
+[node name="dyingsmoke" type="GPUParticles2D" parent="."]
+position = Vector2(-13, 0.999999)
+rotation = -3.01405
+scale = Vector2(0.242, 0.242)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_3n1qd")
+texture = ExtResource("3_4apmi")
+lifetime = 2.59
+
+[node name="dying particles" type="GPUParticles2D" parent="."]
+position = Vector2(-1, -1)
+rotation = -3.01405
+scale = Vector2(0.491935, 0.491935)
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_qww5e")
+texture = ExtResource("3_4apmi")
+lifetime = 0.4
+speed_scale = 0.5
+trail_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 0)
+scale = Vector2(0.530879, 0.530879)
+shape = SubResource("RectangleShape2D_6pslj")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemypart"]]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.6875, -0.625)
+shape = SubResource("RectangleShape2D_i5yps")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_48us7")
+volume_db = -22.994
+
+[node name="rockets" type="Node2D" parent="."]
+
+[node name="rocket2" parent="rockets" instance=ExtResource("5_lly2e")]
+position = Vector2(14, -8)
+
+[node name="rocket3" parent="rockets" instance=ExtResource("5_lly2e")]
+position = Vector2(14, 4)
+
+[node name="salvo" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="explode" type="Timer" parent="."]
+
+[node name="explode2" type="Timer" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_dpgl7")
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_77lor")
+texture = ExtResource("6_tfqso")
+one_shot = true
+explosiveness = 0.68
+randomness = 0.26
+
+[node name="avoidance" type="Area2D" parent="."]
+position = Vector2(-5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="avoidance"]
+position = Vector2(7, 0)
+shape = SubResource("CircleShape2D_sojc2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="salvo" to="." method="_on_salvo_timeout"]
+[connection signal="timeout" from="explode" to="." method="_on_explode_timeout"]
+[connection signal="timeout" from="explode2" to="." method="_on_explode_2_timeout"]

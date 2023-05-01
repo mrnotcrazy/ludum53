@@ -1,0 +1,140 @@
+[gd_scene load_steps=13 format=3 uid="uid://lcan2xymr4sk"]
+
+[ext_resource type="Script" path="res://mainmenu.gd" id="1_4sdjb"]
+[ext_resource type="Texture2D" uid="uid://c08bava6bss8c" path="res://Earth.png" id="1_phs8d"]
+[ext_resource type="Shader" path="res://world_1.gdshader" id="2_na081"]
+[ext_resource type="Texture2D" uid="uid://c3lai1wws6oeu" path="res://icon.svg" id="3_ku7bp"]
+[ext_resource type="Texture2D" uid="uid://cv7ttgvi1uihf" path="res://catship.png" id="4_c0uh6"]
+[ext_resource type="Texture2D" uid="uid://2lynjctruc5i" path="res://drone2.png" id="5_dvoro"]
+[ext_resource type="Texture2D" uid="uid://c0cun10s05wai" path="res://wingl.png" id="6_vpbyj"]
+[ext_resource type="Texture2D" uid="uid://pjpkmls5m1t5" path="res://wingr.png" id="7_jfag8"]
+[ext_resource type="Texture2D" uid="uid://05i21l1hggcj" path="res://tut1.png" id="9_2qc4y"]
+[ext_resource type="Texture2D" uid="uid://d6ipmmny2l0r" path="res://tut3.png" id="10_qisxm"]
+[ext_resource type="Texture2D" uid="uid://ctxdfyk2rrddm" path="res://tuts2.png" id="11_trc1x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kok4m"]
+shader = ExtResource("2_na081")
+shader_parameter/star_count = 300.0
+shader_parameter/viewport_bounds = Quaternion(0, 0, 1280, 720)
+shader_parameter/min_star_size = 0.5
+shader_parameter/max_star_size = 4.353
+shader_parameter/upward_speed = -29.37
+
+[node name="mainmenu" type="Node2D"]
+script = ExtResource("1_4sdjb")
+
+[node name="start" type="Button" parent="."]
+offset_left = 487.0
+offset_top = 407.0
+offset_right = 543.0
+offset_bottom = 438.0
+scale = Vector2(3.16, 3.16)
+text = "START"
+
+[node name="how" type="Button" parent="."]
+offset_left = 746.0
+offset_top = 407.0
+offset_right = 846.0
+offset_bottom = 438.0
+scale = Vector2(3.16, 3.16)
+text = "How to play"
+
+[node name="quit" type="Button" parent="."]
+offset_left = 487.0
+offset_top = 518.0
+offset_right = 543.0
+offset_bottom = 549.0
+scale = Vector2(3.16, 3.16)
+text = "QUIT"
+
+[node name="sound" type="CheckBox" parent="."]
+visible = false
+offset_left = 1006.0
+offset_top = 8.0
+offset_right = 1150.0
+offset_bottom = 39.0
+button_pressed = true
+text = "Sound enabled"
+
+[node name="Earth" type="Sprite2D" parent="."]
+position = Vector2(569, 194)
+texture = ExtResource("1_phs8d")
+
+[node name="stars" type="Node2D" parent="."]
+z_index = -2999
+z_as_relative = false
+rotation = 0.00137409
+
+[node name="starSprite" type="Sprite2D" parent="stars"]
+material = SubResource("ShaderMaterial_kok4m")
+position = Vector2(439.342, 248.493)
+scale = Vector2(13.7923, 8.38251)
+texture = ExtResource("3_ku7bp")
+
+[node name="Catship" type="Sprite2D" parent="."]
+position = Vector2(930, 163)
+scale = Vector2(0.579658, 0.579658)
+texture = ExtResource("4_c0uh6")
+
+[node name="Drone2" type="Sprite2D" parent="."]
+z_index = 500
+position = Vector2(772, 303)
+scale = Vector2(0.207561, 0.207561)
+texture = ExtResource("5_dvoro")
+
+[node name="Wingl" type="Sprite2D" parent="Drone2"]
+z_index = 499
+position = Vector2(-124, 52)
+texture = ExtResource("6_vpbyj")
+
+[node name="Wingr" type="Sprite2D" parent="Drone2"]
+z_index = 499
+position = Vector2(131, 70)
+texture = ExtResource("7_jfag8")
+
+[node name="tuts" type="Node2D" parent="."]
+visible = false
+
+[node name="Tut1" type="Sprite2D" parent="tuts"]
+position = Vector2(575, 318)
+scale = Vector2(1.2287, 1.31647)
+texture = ExtResource("9_2qc4y")
+
+[node name="Tuts2" type="Sprite2D" parent="tuts"]
+visible = false
+position = Vector2(584, 324)
+scale = Vector2(1.48419, 1.48419)
+texture = ExtResource("11_trc1x")
+
+[node name="Tut3" type="Sprite2D" parent="tuts"]
+visible = false
+position = Vector2(565, 324)
+scale = Vector2(1.45973, 1.45973)
+texture = ExtResource("10_qisxm")
+
+[node name="next" type="Button" parent="tuts"]
+offset_left = 49.0
+offset_top = 195.0
+offset_right = 157.0
+offset_bottom = 226.0
+text = "click for next"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 30.0
+offset_top = 44.0
+offset_right = 368.0
+offset_bottom = 325.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 83.0
+scale = Vector2(2.98048, 2.98048)
+text = "CONTROLS: 
+W/S throtle 
+A/d rotation"
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="how" to="." method="_on_how_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="tuts/next" to="." method="_on_next_pressed"]

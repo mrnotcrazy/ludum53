@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://be2gev6wvqx6y"]
+
+[ext_resource type="Script" path="res://rocket.gd" id="1_l47t5"]
+[ext_resource type="Texture2D" uid="uid://cxq21elwjglc6" path="res://rocket.png" id="2_wfy37"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6eprp"]
+radius = 3.0
+
+[node name="rocket" type="RigidBody2D" groups=["enemy", "rocket"]]
+collision_layer = 258
+collision_mask = 0
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("1_l47t5")
+speed = 500
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.57079
+scale = Vector2(0.254653, 0.254653)
+texture = ExtResource("2_wfy37")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_6eprp")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+
+[node name="fuel" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="fuel" to="." method="_on_fuel_timeout"]

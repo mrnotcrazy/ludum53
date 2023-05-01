@@ -1,0 +1,1 @@
+sky shader https://godotshaders.com/shader/cloudy-skies/

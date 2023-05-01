@@ -1,0 +1,279 @@
+[gd_scene load_steps=29 format=3 uid="uid://dmlswxahb7dk3"]
+
+[ext_resource type="Script" path="res://enemyBase.gd" id="1_23obb"]
+[ext_resource type="Texture2D" uid="uid://dcqws3clxa5ou" path="res://enemy1.png" id="2_2nfv1"]
+[ext_resource type="Texture2D" uid="uid://bfjt4j7ym8wc" path="res://particle.png" id="3_tsd10"]
+[ext_resource type="AudioStream" uid="uid://dikrq03gmwtq0" path="res://hit.wav" id="4_vbg6j"]
+[ext_resource type="PackedScene" uid="uid://be2gev6wvqx6y" path="res://rocket.tscn" id="5_17rro"]
+[ext_resource type="Texture2D" uid="uid://dw62rv0n58hl8" path="res://explosion0.png" id="6_pk4br"]
+
+[sub_resource type="Gradient" id="Gradient_h0cbs"]
+offsets = PackedFloat32Array(0, 0.37037, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_heo2w"]
+gradient = SubResource("Gradient_h0cbs")
+
+[sub_resource type="Curve" id="Curve_d71dh"]
+_data = [Vector2(0.0060241, 0.145455), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vdn8o"]
+curve = SubResource("Curve_d71dh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sib6q"]
+lifetime_randomness = 0.79
+particle_flag_disable_z = true
+gravity = Vector3(0, -99, 0)
+initial_velocity_min = 220.59
+initial_velocity_max = 235.29
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_vdn8o")
+color_ramp = SubResource("GradientTexture1D_heo2w")
+attractor_interaction_enabled = false
+
+[sub_resource type="Gradient" id="Gradient_l4a4j"]
+offsets = PackedFloat32Array(0, 0.244444, 0.562963, 0.866667)
+colors = PackedColorArray(75.74, 0, 0, 1, 7.69, 2.37, 0, 1, 0.867219, 0.657223, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7wo5d"]
+gradient = SubResource("Gradient_l4a4j")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_sge22"]
+_data = [Vector2(0.00892857, 0.236364), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_62e6j"]
+curve = SubResource("Curve_sge22")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iromp"]
+lifetime_randomness = 0.33
+emission_shape = 3
+emission_box_extents = Vector3(500, 300, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 34.65
+gravity = Vector3(0, -99, 0)
+initial_velocity_min = 118.11
+initial_velocity_max = 560.23
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.25
+scale_curve = SubResource("CurveTexture_62e6j")
+color_ramp = SubResource("GradientTexture1D_7wo5d")
+attractor_interaction_enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwbf7"]
+size = Vector2(251.156, 90.8427)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_houcc"]
+size = Vector2(1140.18, 271.425)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2ibp"]
+size = Vector2(96.2785, 271.425)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pslj"]
+size = Vector2(832.507, 126.747)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvle6"]
+size = Vector2(301.927, 148.546)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gilcw"]
+size = Vector2(599.513, 166.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5yps"]
+size = Vector2(170.276, 85.625)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dpgl7"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_xoyk8"]
+offsets = PackedFloat32Array(0, 0.603406, 0.997567)
+colors = PackedColorArray(1, 1, 1, 1, 0.355314, 0.355314, 0.355314, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_816yr"]
+gradient = SubResource("Gradient_xoyk8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_77lor"]
+emission_shape = 1
+emission_sphere_radius = 120.2
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 87.6
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+color_ramp = SubResource("GradientTexture1D_816yr")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_se0dk"]
+radius = 517.012
+
+[node name="enemy" type="RigidBody2D" groups=["enemy"]]
+scale = Vector2(0.996334, 1)
+collision_layer = 7
+collision_mask = 5
+mass = 21.34
+gravity_scale = 0.0
+linear_damp = 0.079
+script = ExtResource("1_23obb")
+health = 2000
+move_speed = 250.0
+rotation_speed = 5.0
+target_position = Vector2(5000, 223)
+value = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(112.124, 45.4296)
+scale = Vector2(1.7244, 1.7244)
+texture = ExtResource("2_2nfv1")
+flip_h = true
+
+[node name="dyingsmoke" type="GPUParticles2D" parent="."]
+position = Vector2(-143.566, 85.0232)
+rotation = -3.01405
+scale = Vector2(0.242, 0.242)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_sib6q")
+texture = ExtResource("3_tsd10")
+lifetime = 3.0
+
+[node name="dying particles" type="GPUParticles2D" parent="."]
+position = Vector2(84.3076, 67.9982)
+rotation = -3.13571
+scale = Vector2(0.491935, 0.491935)
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_iromp")
+texture = ExtResource("3_tsd10")
+lifetime = 0.7
+explosiveness = 0.33
+randomness = 0.44
+trail_enabled = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-49.1498, -13.0136)
+rotation = 0.799615
+scale = Vector2(0.467662, 0.467662)
+shape = SubResource("RectangleShape2D_xwbf7")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(205.753, 18.9989)
+rotation = -3.10621
+scale = Vector2(0.102281, 0.102281)
+shape = SubResource("RectangleShape2D_houcc")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(308.135, 69.9693)
+rotation = -1.5531
+scale = Vector2(0.319814, 0.319814)
+shape = SubResource("RectangleShape2D_q2ibp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(48.1766, 62)
+scale = Vector2(0.530879, 0.530879)
+shape = SubResource("RectangleShape2D_6pslj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-67.5572, 77.1018)
+rotation = -3.13085
+scale = Vector2(0.683858, 0.683858)
+shape = SubResource("RectangleShape2D_dvle6")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemypart"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(113.76, 68.625)
+shape = SubResource("RectangleShape2D_gilcw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-80.1197, -48.8125)
+shape = SubResource("RectangleShape2D_i5yps")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vbg6j")
+volume_db = -22.994
+
+[node name="rockets" type="Node2D" parent="."]
+
+[node name="rocket" parent="rockets" instance=ExtResource("5_17rro")]
+position = Vector2(76.2796, 42)
+
+[node name="rocket2" parent="rockets" instance=ExtResource("5_17rro")]
+position = Vector2(107.28, 42)
+
+[node name="rocket3" parent="rockets" instance=ExtResource("5_17rro")]
+position = Vector2(139.28, 42)
+
+[node name="rocket4" parent="rockets" instance=ExtResource("5_17rro")]
+position = Vector2(63.2318, 55)
+
+[node name="rocket5" parent="rockets" instance=ExtResource("5_17rro")]
+position = Vector2(94.2318, 55)
+
+[node name="rocket6" parent="rockets" instance=ExtResource("5_17rro")]
+position = Vector2(126.232, 55)
+
+[node name="rocket7" parent="rockets" instance=ExtResource("5_17rro")]
+position = Vector2(75.276, 69)
+
+[node name="rocket8" parent="rockets" instance=ExtResource("5_17rro")]
+position = Vector2(106.276, 69)
+
+[node name="rocket9" parent="rockets" instance=ExtResource("5_17rro")]
+position = Vector2(138.276, 69)
+
+[node name="rocket10" parent="rockets" instance=ExtResource("5_17rro")]
+position = Vector2(193.71, 62)
+speed = 50
+
+[node name="rocket11" parent="rockets" instance=ExtResource("5_17rro")]
+position = Vector2(224.71, 62)
+speed = 50
+
+[node name="rocket12" parent="rockets" instance=ExtResource("5_17rro")]
+position = Vector2(256.71, 62)
+speed = 50
+
+[node name="salvo" type="Timer" parent="."]
+autostart = true
+
+[node name="explode" type="Timer" parent="."]
+
+[node name="explode2" type="Timer" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_dpgl7")
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_77lor")
+texture = ExtResource("6_pk4br")
+one_shot = true
+explosiveness = 0.68
+randomness = 0.26
+
+[node name="avoidance" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="avoidance"]
+position = Vector2(71.2612, 59)
+shape = SubResource("CircleShape2D_se0dk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="salvo" to="." method="_on_salvo_timeout"]
+[connection signal="timeout" from="explode" to="." method="_on_explode_timeout"]
+[connection signal="timeout" from="explode2" to="." method="_on_explode_2_timeout"]

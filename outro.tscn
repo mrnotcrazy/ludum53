@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://b47ttb17rgghs"]
+
+[ext_resource type="Script" path="res://intro.gd" id="1_68nih"]
+[ext_resource type="Texture2D" uid="uid://wvcxgrspbtqd" path="res://screengib1.png" id="2_mifaj"]
+[ext_resource type="Texture2D" uid="uid://d0f3pjjk5ff4p" path="res://screengib2.png" id="3_8b5m6"]
+[ext_resource type="Texture2D" uid="uid://d2shnv47oqlj3" path="res://goose.png" id="4_w3swx"]
+[ext_resource type="Texture2D" uid="uid://unpwmh208x3t" path="res://layla.png" id="5_hcrk0"]
+[ext_resource type="Shader" path="res://world_1.gdshader" id="6_i7baw"]
+[ext_resource type="Texture2D" uid="uid://c3lai1wws6oeu" path="res://icon.svg" id="7_lm6qi"]
+[ext_resource type="Script" path="res://dialog2.gd" id="8_6oln7"]
+[ext_resource type="Texture2D" uid="uid://b4agcnko3i2so" path="res://dogs1.png" id="9_0cba0"]
+[ext_resource type="Texture2D" uid="uid://pl5a27o0bwvl" path="res://dogs3.png" id="10_uo7xi"]
+[ext_resource type="Texture2D" uid="uid://7lq0j0imm2ti" path="res://dog4.png" id="11_chaai"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q02hr"]
+shader = ExtResource("6_i7baw")
+shader_parameter/star_count = 300.0
+shader_parameter/viewport_bounds = Quaternion(0, 0, 1280, 720)
+shader_parameter/min_star_size = 0.5
+shader_parameter/max_star_size = 4.353
+shader_parameter/upward_speed = -29.37
+
+[node name="intro" type="Node2D"]
+position = Vector2(10, 0)
+script = ExtResource("1_68nih")
+
+[node name="Screengib1" type="Sprite2D" parent="."]
+position = Vector2(961, 179)
+scale = Vector2(3.0431, 3.0431)
+texture = ExtResource("2_mifaj")
+
+[node name="Screengib2" type="Sprite2D" parent="."]
+position = Vector2(161, 417)
+scale = Vector2(3.38203, 3.38203)
+texture = ExtResource("3_8b5m6")
+
+[node name="Goose" type="Sprite2D" parent="."]
+position = Vector2(164, 307)
+scale = Vector2(0.671875, 0.671875)
+texture = ExtResource("4_w3swx")
+
+[node name="Layla" type="Sprite2D" parent="."]
+position = Vector2(967, 186)
+scale = Vector2(0.660156, 0.660156)
+texture = ExtResource("5_hcrk0")
+
+[node name="stars" type="Node2D" parent="."]
+z_index = -2999
+z_as_relative = false
+rotation = 0.00137409
+
+[node name="starSprite" type="Sprite2D" parent="stars"]
+material = SubResource("ShaderMaterial_q02hr")
+position = Vector2(573.995, 321.28)
+scale = Vector2(9.71987, 5.6364)
+texture = ExtResource("7_lm6qi")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 362.0
+offset_top = 94.0
+offset_right = 766.0
+offset_bottom = 555.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 387.0
+offset_top = 107.0
+offset_right = 737.0
+offset_bottom = 529.0
+text = "\"\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("8_6oln7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="skip" type="Button" parent="."]
+offset_left = 516.0
+offset_top = 570.0
+offset_right = 634.0
+offset_bottom = 640.0
+text = "SKIP"
+
+[node name="sounds" type="AudioStreamPlayer" parent="."]
+
+[node name="Dogs1" type="Sprite2D" parent="."]
+position = Vector2(76, 103)
+scale = Vector2(0.479614, 0.479614)
+texture = ExtResource("9_0cba0")
+
+[node name="Dogs3" type="Sprite2D" parent="."]
+position = Vector2(970, 525)
+scale = Vector2(0.620913, 0.620913)
+texture = ExtResource("10_uo7xi")
+
+[node name="Dog4" type="Sprite2D" parent="."]
+position = Vector2(237, 109)
+scale = Vector2(0.565934, 0.565934)
+texture = ExtResource("11_chaai")
+
+[connection signal="timeout" from="Timer" to="Label" method="_on_timer_timeout"]
+[connection signal="pressed" from="skip" to="." method="_on_skip_pressed"]
